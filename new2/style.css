@@ -6,6 +6,7 @@
 html,body{
    height: 100%;
    width: 100%;
+   overflow: hidden;
 }
 #main{
 
@@ -13,7 +14,10 @@ html,body{
     width: 100%;
     background-color:#4b703e;
     display: flex;
+    
+    /* background-repeat: no-repeat; */
 
+    
 }
 #part1{
     height: 100%;
@@ -73,16 +77,43 @@ html,body{
 #virical-text{
 position: absolute;
 /* width: 100%; */
+transform: rotate(90deg);
+right: -34%;
+top: -0%;
+/* z-index: 5; */
+/* top: 0% */
+transform-origin: 0% 0%;
 
 
 }
 #virical-text>h1{
-    font-size: 70px;
+    font-size: 40px;
     font-weight: 900; 
+    text-transform: uppercase;
     color: transparent;
-    transform: rotate(90deg);
-    transform-origin: 0% , 0%;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     -webkit-text-stroke-width:2px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+#nav{
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+    left: 7%;
+    top: 5%;
+    /* background-color: red; */
+
+
+}
+#nav img{
+
+    height: 60px;
+
+}
+#nav h5{
+    font-size: 20px;
+    color: #fff;
 }
