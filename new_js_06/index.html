@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <div class="container">
+        <h2>Real Time character Counter</h2>
+        <p>Check your English text for grammar, spelling, and punctuation errors
+            with real time char counter</p>
+        <textarea id="textarea" class="textarea" placeholder="krishan saini" maxlength="200">
+            </textarea>
+        <button onclick="copyText()"> copy Text</button>
+
+        <div class="counter-container">
+            <p>Total char:<span id="Total-counter">0</span></p>
+            <p>Remaning char:<span id="Remaning-counter">200</span></p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
