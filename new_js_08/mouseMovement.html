@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Follow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(133, 196, 238);
+        }
+        .face {
+            width: 600px;
+            height: 550px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .eyes {
+            width: inherit;
+            height: 300px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .eye {
+            width: 250px;
+            height: 250px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px;
+            position: relative;
+        }
+        .pupil {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eyes">
+            <div class="eye">
+                <div class="pupil" id="leftPupil"></div>
+            </div>
+            <div class="eye">
+                <div class="pupil" id="rightPupil"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pupils = document.querySelectorAll('.pupil');
+
+        const pupilStartPoint = -100;
+        const pupilRange = 200;
+
+        const updatePupilPosition = (event) => {
+            const fracXValue = event.clientX / window.innerWidth;
+            const fracYValue = event.clientY / window.innerHeight;
+
+            const pupilXCurrentPosition = pupilStartPoint + (fracXValue * pupilRange);
+            const pupilYCurrentPosition = pupilStartPoint + (fracYValue * pupilRange);
+
+            pupils.forEach((pupil) => {
+                pupil.style.transform = `translate(${pupilXCurrentPosition}px, ${pupilYCurrentPosition}px)`;
+            });
+        };
+
+        window.addEventListener('mousemove', updatePupilPosition);
+
+        window.addEventListener('resize', () => {
+            // No need to update mouseXRange or mouseYRange because they are recalculated dynamically in updatePupilPosition
+        });
+    </script>
+</body>
+</html>
