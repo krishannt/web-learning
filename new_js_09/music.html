@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/24d14f3406.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main_div">
+        <div class="musis_container">
+            <h2 id="titel">LOTUS LANE</h2>
+            <h3 id="artist">The Loyalist</h3>
+
+            <div class="img_container">
+                <img id="cover" src="src/img/pexels-lizolda99-9938788.jpg" alt="">
+            </div>
+            <audio id="audio" src="src/music/kri1.mp3"></audio>
+
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="previous"></i>
+                <i class="fas fa-play main-button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        const img = document.querySelector('img');
+        const audio = document.getElementById('audio');
+        const play = document.getElementById('play');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        const title = document.getElementById('titel');
+        const artist = document.getElementById('artist');
+        const cover = document.getElementById('cover');
+
+        let isPlaying = false;
+
+        const songs = [
+            { title: "Accounts", artist: " Yo Yo Honey Singh", src: "src/music/kri1.mp3", cover: "src/img/pexels-lizolda99-9938788.jpg" },
+            { title: "Vigdiyan-Heeran", artist: "Yo Yo Honey Singh", src: "src/music/kri2.mp3", cover: "src/img/pexels-moose-photos-170195-1037992.jpg" }
+        ];
+
+        let songIndex = 0;
+
+        const loadSong = (song) => {
+            title.textContent = song.title;
+            artist.textContent = song.artist;
+            audio.src = song.src;
+            cover.src = song.cover;
+        };
+
+        const playMusic = () => {
+            isPlaying = true;
+            audio.play();
+            play.classList.replace("fa-play", "fa-pause");
+            img.classList.add("anime");
+        };
+
+        const pauseMusic = () => {
+            isPlaying = false;
+            audio.pause();
+            play.classList.replace("fa-pause", "fa-play");
+            img.classList.remove("anime");
+        };
+
+        play.addEventListener('click', () => {
+            isPlaying ? pauseMusic() : playMusic();
+        });
+
+        next.addEventListener('click', () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        });
+
+        prev.addEventListener('click', () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        });
+
+        // Load initial song
+        loadSong(songs[songIndex]);
+    </script>
+</body>
+</html>
